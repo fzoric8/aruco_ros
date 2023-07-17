@@ -207,9 +207,11 @@ public:
         markers.clear();
         // ok, let's detect
         mDetector.detect(inImage, markers, camParam, marker_size, false);
+        ROS_INFO_STREAM_THROTTLE(5, "Looking for markers!"); 
         // for each marker, draw info and its boundaries in the image
         for (std::size_t i = 0; i < markers.size(); ++i)
         {
+          ROS_INFO_STREAM_THROTTLE(1, "Marker is detected! Its id is: " << markers[i].id);
           // only publishing the selected marker
           if (markers[i].id == marker_id)
           {
